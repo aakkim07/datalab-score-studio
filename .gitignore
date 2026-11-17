@@ -4,5 +4,6 @@ __pycache__/
 build/
 dist/*
 !dist/DataLab.exe
+!dist/DataLab-minimal.exe
 *.spec
 .idea/workspace.xml

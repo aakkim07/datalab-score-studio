@@ -1,12 +1,16 @@
 import random
-from statistics import median, mean
+from statistics import mean
 
 
-FORMULAS = {
-    "x × 1.25 + 10": lambda value: value * 1.25 + 10,
-    "x × 0.80": lambda value: value * 0.8,
-    "x + 15": lambda value: value + 15,
-}
+FORMULA_LABEL = "y = 2x + 10"
+
+
+def calculate(value):
+    return 2 * value + 10
+
+
+def transform_values(values):
+    return [calculate(value) for value in values]
 
 
 def generate_values(count=50, rng=None):
@@ -16,14 +20,6 @@ def generate_values(count=50, rng=None):
     return [generator.randint(10, 100) for _ in range(count)]
 
 
-def transform_values(values, formula_name):
-    try:
-        formula = FORMULAS[formula_name]
-    except KeyError as error:
-        raise ValueError(f"Neznámy vzorec: {formula_name}") from error
-    return [formula(value) for value in values]
-
-
 def summarize(values):
     if not values:
         raise ValueError("Pole hodnôt nesmie byť prázdne.")
@@ -31,6 +27,5 @@ def summarize(values):
         "minimum": min(values),
         "maximum": max(values),
         "average": mean(values),
-        "median": median(values),
         "ordered": tuple(sorted(values)),
     }

@@ -15,7 +15,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-".venv\Scripts\python.exe" -m PyInstaller --noconfirm --clean --onefile --windowed --name DataLab main.py
+".venv\Scripts\python.exe" -m PyInstaller --noconfirm --clean --onefile --windowed --name DataLab-minimal main.py
 if errorlevel 1 (
     echo ERROR: EXE build failed.
     pause
@@ -23,5 +23,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo Done. Launch dist\DataLab.exe
+echo Done. Launch dist\DataLab-minimal.exe
 pause
